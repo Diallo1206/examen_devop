@@ -61,3 +61,41 @@ Depuis le répertoire racine du projet, exécutez :
 
 ```bash
 docker build -t basic-http-server .
+
+# Automatisation avec GitHub Actions
+
+Ce projet utilise GitHub Actions pour automatiser la construction et le push de l'image Docker vers DockerHub après chaque commit sur la branche principale.
+
+---
+
+## **Pipeline CI/CD**
+
+### **Déclenchement**
+- Le pipeline est déclenché automatiquement à chaque `push` sur la branche `main`.
+
+### **Étapes du pipeline**
+1. Vérifie le code source.
+2. Se connecte à DockerHub en utilisant les secrets sécurisés.
+3. Construit l'image Docker avec les tags suivants :
+   - `latest`
+   - Un tag unique basé sur le SHA du commit (`exemple : abc123`).
+4. Pousse l'image Docker sur DockerHub.
+
+---
+
+## **Configuration des Secrets**
+
+Pour sécuriser vos identifiants DockerHub, ajoutez les secrets suivants dans votre dépôt GitHub :
+
+- **DOCKER_USERNAME** : Votre nom d'utilisateur DockerHub.
+- **DOCKER_PASSWORD** : Votre mot de passe DockerHub.
+
+---
+
+## **Télécharger l'image depuis DockerHub**
+
+Une fois l'image disponible sur DockerHub, elle peut être téléchargée et exécutée sur n'importe quel environnement :
+
+```bash
+docker pull <dockerhub-username>/basic-http-server:latest
+docker run -p 8000:8000 <dockerhub-username>/basic-http-server:latest
