@@ -8,7 +8,7 @@ class SimpleHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
         # Contenu de la réponse
-        message = "<html><body><h1>Hello, Docker!</h1></body></html>"
+        message = "<html><body><h1>Bonjour, Docker!</h1></body></html>"
         self.wfile.write(message.encode("utf-8"))
 
 if __name__ == "__main__":
