@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: abdou1230/basic-docker-project-ci-cd:v1.0
+          tags: abdoul1230/basic-http-server
